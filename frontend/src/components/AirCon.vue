@@ -25,6 +25,16 @@
           >
             Stop
           </v-btn>
+
+          <v-btn
+            color="primary"
+            large
+            dark
+            @click="getStatus"
+          >
+            Status
+          </v-btn>
+
           <v-btn
             color="primary"
             large
@@ -36,7 +46,8 @@
 
         </div>
         <div>
-          {{sensorInfo}}
+          Sensor Info: {{sensorInfo}}<br>
+          Power Status: {{powerStatus}}
         </div>
       </v-flex>
     </v-layout>
@@ -48,7 +59,7 @@ import axios from 'axios'
 
 export default {
   data: () => ({
-    powerStatus: null,
+    powerStatus: {},
     sensorInfo: {},
   }),
   methods: {
@@ -61,8 +72,11 @@ export default {
       axios.get(`${process.env.VUE_APP_AIRCON_URL}/power/stop`)
     },
 
-    status: function(){
+    getStatus: function(){
       axios.get(`${process.env.VUE_APP_AIRCON_URL}/power/status`)
+      .then((response) => {
+        this.$set(this, 'powerStatus', response.data)
+      })
     },
 
     getSensorInfo: function(){
