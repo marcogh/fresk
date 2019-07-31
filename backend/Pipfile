@@ -10,9 +10,11 @@ ipython = "*"
 flask = "*"
 urllib3 = "*"
 flask-cors = "*"
+gunicorn = "*"
+gevent = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.5"
 
 [scripts]
 serve="flask run"
