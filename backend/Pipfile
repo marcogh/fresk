@@ -11,6 +11,7 @@ quart = "*"
 urllib3 = "*"
 # flask-cors = "*"
 quart-cors = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
